@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Carlos · only1.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+  /* ── TOKENS only1. v3.1 (ajusta a tus hex exactos) ───────────── */
+  :root{
+    --noir:#151515;--noir-2:#1F1F1F;
+    --cream:#FAFAF8;--cream-dim:#909090;
+    --wine:#A0223E;--wine-hi:#c02a4e;
+    --line:rgba(250,250,248,0.13);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    background:var(--noir);color:var(--cream);
+    font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;display:flex;justify-content:center;
+    padding:max(24px,env(safe-area-inset-top)) 22px max(28px,env(safe-area-inset-bottom));
+  }
+  .card{width:100%;max-width:430px;display:flex;flex-direction:column}
+
+  .top{display:flex;align-items:center;justify-content:space-between}
+  .wordmark{font-size:26px;font-weight:800;letter-spacing:-.04em}
+  .wordmark b{color:var(--wine)}
+  .status{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--cream-dim)}
+  .dot{width:7px;height:7px;border-radius:50%;background:#3ecf7e;animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(62,207,126,.45)}70%{box-shadow:0 0 0 7px rgba(62,207,126,0)}100%{box-shadow:0 0 0 0 rgba(62,207,126,0)}}
+
+  .body{padding:38px 0 8px}
+  .name{font-size:40px;line-height:1.02;font-weight:600;letter-spacing:-.035em}
+  .role{margin-top:10px;font-size:14px;color:var(--cream-dim);letter-spacing:.04em;text-transform:uppercase}
+  .pitch{margin-top:24px;font-size:19px;line-height:1.4;max-width:22ch;min-height:2.8em;font-weight:400}
+  .caret{display:inline-block;width:2px;height:1em;background:var(--wine);margin-left:2px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  .actions{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:10px;height:58px;border-radius:15px;font-size:16px;font-weight:600;text-decoration:none;letter-spacing:-.01em;transition:transform .12s ease,background .15s ease,border-color .15s ease}
+  .btn:active{transform:scale(.985)}
+  .btn-wa{background:var(--wine);color:var(--cream)}
+  .btn-wa:hover{background:var(--wine-hi)}
+  .btn-save{background:transparent;color:var(--cream);border:1px solid var(--line)}
+  .btn-save:hover{border-color:var(--cream-dim)}
+  .btn svg{width:20px;height:20px;flex:none}
+
+  .links{display:flex;gap:8px;margin-top:20px}
+  .links a{flex:1;text-align:center;padding:13px 6px;border-radius:12px;background:var(--noir-2);color:var(--cream-dim);text-decoration:none;font-size:13px;font-weight:500;transition:color .15s ease}
+  .links a:hover{color:var(--cream)}
+
+  /* ── Clientes estilo Instagram ───────────────────────────────── */
+  .clients{margin-top:34px}
+  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);display:flex;align-items:center;gap:8px;margin-bottom:18px}
+  .eyebrow svg{width:15px;height:15px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 8px}
+  .client{display:flex;flex-direction:column;align-items:center;gap:9px;text-decoration:none}
+  .avatar{width:64px;height:64px;border-radius:50%;padding:2.5px;background:conic-gradient(from 215deg,var(--wine),#b8860b,var(--wine));display:flex;transition:transform .12s ease}
+  .avatar i{flex:1;border-radius:50%;background:var(--noir-2);border:2.5px solid var(--noir);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;font-style:normal;color:var(--cream);overflow:hidden}
+  .avatar i img{width:100%;height:100%;object-fit:cover}
+  .client small{font-size:10.5px;color:var(--cream-dim);text-align:center;line-height:1.25;overflow-wrap:anywhere}
+  .client:active .avatar{transform:scale(.95)}
+
+  footer{margin-top:32px;font-size:11px;color:var(--cream-dim);letter-spacing:.06em;text-align:center;opacity:.7}
+  @media (prefers-reduced-motion:reduce){.caret{display:none}.dot{animation:none}}
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="top">
+      <div class="wordmark">only1<b>.</b></div>
+      <div class="status"><span class="dot"></span>responde al momento</div>
+    </div>
+
+    <div class="body">
+      <h1 class="name">Carlos Sieiro</h1>
+      <div class="role">Co-fundador · only1.</div>
+
+      <p class="pitch" id="pitch" data-text="Montamos el sistema que vende tu conocimiento por ti."></p>
+
+      <div class="actions">
+        <a class="btn btn-wa" href="https://wa.me/34672854705?text=Hola%20Carlos,%20te%20escaneé%20la%20tarjeta%20en%20la%20Gala%20✨">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1.1.1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.4.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l1.7.8c.3.1.5.2.5.4.1.1.1.6-.1 1.1Z"/></svg>
+          Hablar por WhatsApp
+        </a>
+        <a class="btn btn-save" id="save" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+          Guardar contacto
+        </a>
+      </div>
+
+      <div class="links">
+        <a href="https://instagram.com/carlossieiro">Mi Instagram</a>
+        <a href="https://instagram.com/onlyonegrowth">IG only1</a>
+        <a href="https://only1ecosystem.com">Web</a>
+      </div>
+
+      <div class="clients">
+        <div class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+          Algunos de nuestros clientes
+        </div>
+        <div class="grid">
+          <a class="client" href="https://instagram.com/tomasgraciaoficial"><span class="avatar"><i>TG</i></span><small>@tomasgraciaoficial</small></a>
+          <a class="client" href="https://instagram.com/inigo00"><span class="avatar"><i>IÑ</i></span><small>@inigo00</small></a>
+          <a class="client" href="https://instagram.com/leyretorres_"><span class="avatar"><i>LT</i></span><small>@leyretorres_</small></a>
+          <a class="client" href="https://instagram.com/repa.movement"><span class="avatar"><i>R</i></span><small>@repa.movement</small></a>
+          <a class="client" href="https://instagram.com/brayanmoralesok"><span class="avatar"><i>BM</i></span><small>@brayanmoralesok</small></a>
+          <a class="client" href="https://instagram.com/erikymonikasalsadancers"><span class="avatar"><i>EM</i></span><small>@erikymonikasalsadancers</small></a>
+        </div>
+      </div>
+    </div>
+
+    <footer>only1. · growth &amp; automatización IA</footer>
+  </main>
+
+<script>
+  const C = {
+    nombre:"Carlos", apellido:"Sieiro",
+    empresa:"only1.", cargo:"Co-fundador",
+    telefono:"+34672854705", email:"",
+    web:"https://only1ecosystem.com"
+  };
+
+  (function(){
+    const el=document.getElementById('pitch'), txt=el.dataset.text;
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=txt;return;}
+    let i=0; const caret='<span class="caret"></span>'; el.innerHTML=caret;
+    const tick=()=>{i++;el.innerHTML=txt.slice(0,i)+(i<txt.length?caret:'');if(i<txt.length)setTimeout(tick,34);};
+    setTimeout(tick,380);
+  })();
+
+  document.getElementById('save').addEventListener('click',function(e){
+    e.preventDefault();
+    const L=["BEGIN:VCARD","VERSION:3.0",
+      `N:${C.apellido};${C.nombre};;;`,
+      `FN:${C.nombre}${C.apellido?' '+C.apellido:''}`,
+      `ORG:${C.empresa}`,`TITLE:${C.cargo}`,
+      `TEL;TYPE=CELL:${C.telefono}`];
+    if(C.email) L.push(`EMAIL:${C.email}`);
+    L.push(`URL:${C.web}`,"END:VCARD");
+    const blob=new Blob([L.join("\r\n")],{type:"text/vcard;charset=utf-8"});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url; a.download="Carlos-only1.vcf";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1500);
+  });
+</script>
+</body>
+</html>
