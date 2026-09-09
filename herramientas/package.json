@@ -1,0 +1,13 @@
+{
+  "name": "card-only1-herramientas",
+  "private": true,
+  "description": "Genera las piezas con el QR de cada tarjeta. No forma parte del sitio.",
+  "scripts": {
+    "qr": "node qr.js"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4",
+    "jsqr": "^1.4.0",
+    "pngjs": "^7.0.0"
+  }
+}

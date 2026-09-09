@@ -124,6 +124,35 @@ script sólo existe en Vercel.
 - **Ningún enlace que prometa más de lo que hay.** Se quitó el «Ver todo» de los
   casos: llevaba a una página que no enseña más que estos cuatro.
 
+## El QR
+
+`herramientas/qr.js` genera la pieza con el código de cada tarjeta:
+
+```
+cd herramientas && npm install
+node qr.js                 # los cinco
+node qr.js jonathan        # sólo uno
+node qr.js jonathan feria  # con el parámetro de evento en el enlace
+```
+
+Deja en `qr/` el SVG del código suelto, el HTML de la pieza y dos PNG: uno de
+**1080×1350** para enseñar en el móvil o publicar, y otro de **1240×1748** (A6 a
+300 ppp, fondo claro) para imprimir. Quedan publicados, así que se pueden abrir
+desde el móvil: `card.onlyonegrowth.com/qr/jonathan-pantalla.png`.
+
+El código lleva el isotipo en el centro y el ojo de abajo a la izquierda en wine.
+Cuatro cosas que hay que respetar, todas aprendidas a base de que no leyera:
+
+- **Corrección H** (30 %). Es lo que permite tapar el centro con el isotipo.
+- **4 módulos de zona de silencio**, dentro del propio SVG.
+- **El viewBox va en módulos, no en píxeles.** Dibujado en píxeles el paso queda
+  en 22,22 px, los bordes salen difuminados y deja de leerse.
+- **Los módulos se tocan.** Con puntos sueltos (radio 0,47 de la celda) quedan
+  huecos entre vecinos y no lee; con el módulo redondeado ocupando la celda, sí.
+
+El script **decodifica lo que acaba de generar** y compara con la URL: si no se
+lee, o si algún bloque se sale de la pieza, falla y no deja el archivo por bueno.
+
 ## Deploy
 
 Proyecto en Vercel con dominio personalizado `card.onlyonegrowth.com`.
