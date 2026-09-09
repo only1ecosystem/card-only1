@@ -8,20 +8,24 @@
 const MOSTRAR_PRECIOS = false;
 
 const SECTORES = [
-  'Inmobiliaria', 'Automoción', 'Bienestar', 'Clínicas',
-  'Formación', 'Fitness', 'Marca personal',
+  'Inmobiliaria', 'Automoción', 'Bienestar', 'Clínicas', 'Consultoría',
+  'Formación', 'Fitness', 'Marca personal', 'Danza',
 ];
 
+// ⚠️ Sólo dos de estas seis están comprobadas: los 29 clientes salen de la
+// base del CRM y los 9 sectores son los de SECTORES, uno por uno. Las otras
+// cuatro las subió Lucas a ojo el 09/09/2026 y siguen sin respaldo: si un
+// cliente las pide, hay que poder enseñarlas.
 const CIFRAS = {
   e: [
-    ['Proyectos ejecutados', '15+'],
-    ['Sectores distintos', '7'],
-    ['Webs y sistemas en marcha', '20+'],
+    ['Proyectos entregados', '40+'],
+    ['Clientes acompañados', '29'],
+    ['Sectores distintos', '9'],
   ],
   c: [
-    ['Seguidores generados', '80K+'],
-    ['Reproducciones orgánicas', '3M'],
-    ['Piezas producidas', '500+'],
+    ['Seguidores generados', '150K+'],
+    ['Reproducciones orgánicas', '12M'],
+    ['Piezas producidas', '1.200+'],
   ],
 };
 
@@ -76,13 +80,20 @@ const CASOS = [
   },
 ];
 
+// Nombre e Instagram. Sin foto: así entra cualquiera sin tener que buscarle
+// un avatar, y la lista deja de depender de imágenes de terceros.
+// El que no tenga usuario de Instagram se imprime igual, sin enlace.
 const CLIENTES = [
-  ['tomasgraciaoficial', 'cli-tomas.jpg', 'Tomás Gracia'],
-  ['inigoo00', 'cli-inigo.jpg', 'Íñigo'],
-  ['leyretorres_', 'cli-leyre.jpg', 'Leyre Torres'],
-  ['repa.movement', 'cli-repa.jpg', 'Repa Movement'],
-  ['bryanmoralesk', 'cli-bryan.jpg', 'Bryan Morales'],
-  ['erikymonika.salsadancers', 'cli-erikymonika.jpg', 'Erik y Monika'],
+  ['Tomás Gracia', 'tomasgraciaoficial'],
+  ['Metrik Consulting', null],
+  ['Ana María Rentería', null],
+  ['Zallo Motor', null],
+  ['Repa Movement', 'repa.movement'],
+  ['Mile Wellness', null],
+  ['Leyre Torres', 'leyretorres_'],
+  ['Bryan Morales', 'bryanmoralesk'],
+  ['Íñigo', 'inigoo00'],
+  ['Erik y Monika', 'erikymonika.salsadancers'],
 ];
 
 const PASOS = {

@@ -58,8 +58,11 @@ const pasos = (cara) => PASOS[cara].map(([t, d], i) => `
           <div><h3>${esc(t)}</h3><p>${esc(d)}</p></div>
         </li>`).join('');
 
-const clientes = () => CLIENTES.map(([ig, img, nom]) => `
-        <a href="https://instagram.com/${ig}" aria-label="${esc(nom)} en Instagram"><img src="/assets/${img}" width="128" height="128" loading="lazy" decoding="async" alt="${esc(nom)}"></a>`).join('');
+const clientes = () => CLIENTES.map(([nom, ig]) => (ig
+  ? `
+        <a class="cli" href="https://instagram.com/${ig}">${esc(nom)}</a>`
+  : `
+        <span class="cli">${esc(nom)}</span>`)).join('');
 
 // ── la pieza ───────────────────────────────────────────────────────────────
 
@@ -287,17 +290,18 @@ function html(p) {
   .pasos h3{font-size:15.5px;font-weight:700;letter-spacing:-.02em;line-height:1.3}
   .pasos p{font-size:13px;color:var(--muted-alto);line-height:1.5;margin-top:4px}
 
-  /* ── clientes ──────────────────────────────────────────────── */
-  /* 6 en una fila a cualquier ancho: a 52px fijos no caben en un iPhone. */
-  .avatars{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-top:var(--md)}
-  .avatars a{
-    aspect-ratio:1;border-radius:50%;overflow:hidden;
-    border:1px solid var(--line-strong);background:var(--carbon);
-    transition:transform .35s var(--ease),border-color .25s var(--ease);
+  /* ── clientes · nombres, sin fotos de terceros ─────────────── */
+  .avatars{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--md)}
+  .cli{
+    display:flex;align-items:center;min-height:44px;padding:0 15px;
+    font-size:13.5px;font-weight:600;letter-spacing:-.01em;color:var(--cream);
+    background:var(--carbon);border:1px solid var(--line);border-radius:999px;
+    transition:border-color .25s var(--ease),transform .35s var(--ease);
   }
-  .avatars img{width:100%;height:100%;object-fit:cover}
-  .avatars a:active{transform:scale(.94)}
-  @media (hover:hover){.avatars a:hover{border-color:var(--cream)}}
+  /* los que tienen Instagram llevan el punto; los demás, no */
+  a.cli::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--wine-vivo);margin-left:9px}
+  a.cli:active{transform:scale(.96)}
+  @media (hover:hover){a.cli:hover{border-color:var(--line-strong)}}
 
   /* ── enlaces + pie ─────────────────────────────────────────── */
   .links{display:flex;flex-wrap:wrap;gap:0 var(--md);margin-top:var(--xl);padding-top:12px;border-top:1px solid var(--line)}
