@@ -1,9 +1,9 @@
 // Datos de las tarjetas. Se edita esto y se ejecuta `node generar.js`.
-// El alcance de cada servicio vive en servicios.js.
+// Los paquetes viven en paquetes.js.
 // tel: sin signos, como lo pide wa.me. ig: usuario sin arroba.
 // Cada persona tiene dos caras: e = empresas, c = contenido.
 
-// Se enseña el precio «desde» de cada servicio en la tarjeta.
+// Se enseña el precio «desde» de cada paquete en la tarjeta.
 // Por defecto no: el precio va en la propuesta, después de la llamada.
 const MOSTRAR_PRECIOS = false;
 
@@ -29,8 +29,8 @@ const CIFRAS = {
   ],
 };
 
-// Casos con captura real de la web publicada, contados por lo que ganó el
-// cliente y no por lo que entregamos nosotros.
+// Casos contados por lo que ganó el cliente, no por lo que entregamos.
+// Sin capturas: la pieza no lleva imágenes.
 //   antes    — de dónde venía
 //   despues  — en qué ha cambiado su día a día
 //   metrica  — la cifra grande. Sólo se pone si se puede enseñar: la de Zallo
@@ -41,8 +41,6 @@ const CASOS = [
   {
     nombre: 'Ana María Rentería',
     sector: 'Inmobiliaria de lujo',
-    img: 'proy-anamaria.jpg',
-    alt: 'Web de Ana María Rentería: villa de lujo sobre el mar con el titular «No necesitas ver más propiedades»',
     metrica: null,
     metricaPie: null,
     antes: 'Enseñaba propiedades una a una por WhatsApp, a compradores de medio mundo.',
@@ -51,8 +49,6 @@ const CASOS = [
   {
     nombre: 'Zallo Motor',
     sector: 'Taller mecánico · Bilbao',
-    img: 'proy-zallomotor.jpg',
-    alt: 'Web de Zallo Motor: el taller de Bilbao por dentro con coches en el elevador',
     metrica: '4,9★',
     metricaPie: 'con 108 reseñas en Google',
     antes: 'Un taller de barrio que dependía del boca a boca del vecino.',
@@ -61,8 +57,6 @@ const CASOS = [
   {
     nombre: 'Mile Wellness',
     sector: 'Bienestar',
-    img: 'proy-milewellness.jpg',
-    alt: 'Web de Mile Wellness: masaje con aceite y el titular «Tu bienestar es tu mejor inversión»',
     metrica: null,
     metricaPie: null,
     antes: 'Cada cita costaba una conversación, y los huecos libres se quedaban vacíos.',
@@ -71,8 +65,6 @@ const CASOS = [
   {
     nombre: 'Tomás Gracia',
     sector: 'Formación · Marca personal',
-    img: 'proy-tomas.jpg',
-    alt: 'Landing de Tomás Gracia para el evento online Desata tu poder invencible',
     metrica: 'Objetivo',
     metricaPie: 'de plazas cubierto',
     antes: 'Un evento en directo que había que llenar en cuestión de días.',

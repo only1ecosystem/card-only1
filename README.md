@@ -24,12 +24,16 @@ Las dos caras de ONLY1 en una sola pieza, con un conmutador arriba. La de
 
 | | Empresas | Contenido |
 |---|---|---|
-| Cifras | Proyectos · sectores · sistemas en marcha | Seguidores · reproducciones · piezas |
-| Sectores | Chips de los 7 sectores trabajados | — |
+| Cifras | Proyectos · clientes · sectores | Seguidores · reproducciones · piezas |
+| Sectores | Chips de los 9 sectores trabajados | — |
 | Casos | 4, en formato antes / ahora | — |
 | Paquetes | 5 | 4 |
 | Cómo funciona | 3 pasos hasta tenerlo montado | 3 pasos hasta publicar |
-| Clientes | Los 6 avatares, enlazados a su Instagram | igual |
+| Clientes | 10 nombres, con enlace a Instagram el que lo tenga | igual |
+
+**La pieza no lleva imágenes.** Ni capturas de proyecto ni avatares de cliente:
+todo es tipografía, hairlines y la cifra en grande. Pesa 32 KB, carga instantánea
+con datos móviles y no depende de fotos de terceros.
 
 **Los casos van antes que el catálogo, y se cuentan por lo que ganó el cliente**,
 no por lo que entregamos: de dónde venía, en qué ha cambiado y, cuando hay cifra
@@ -56,13 +60,9 @@ card-only1/
 ├── paquetes.js         # qué se vende, por encima
 ├── generar.js          # plantilla + generador: node generar.js
 ├── index.html          # redirección de la raíz
-├── vercel.json         # cleanUrls + cabeceras .vcf y caché de assets
-├── assets/             # imágenes compartidas por todas las tarjetas
-│   ├── proy-*.jpg      # capturas de proyectos (640×400)
-│   └── cli-*.jpg       # avatares de clientes (128×128)
+├── vercel.json         # cleanUrls y cabecera de los .vcf
 ├── <persona>/index.html   # generado
 ├── <persona>.vcf          # generado
-├── lucas-v2/           # la v2 de una sola cara, de referencia
 └── _v1/                # las tarjetas de julio, congeladas (redirigidas en Vercel)
 ```
 
@@ -129,5 +129,5 @@ script sólo existe en Vercel.
 Proyecto en Vercel con dominio personalizado `card.onlyonegrowth.com`.
 Al ser carpetas por persona, Vercel sirve las rutas sin `.html`.
 
-Para regenerar capturas de proyectos o avatares hay scripts de Playwright: pedir a
-Claude «regenera las capturas de las tarjetas».
+Las capturas de proyecto y los avatares de cliente que había hasta el 09/09/2026
+están en la historia de git, junto con la tarjeta `lucas-v2` que los usaba.

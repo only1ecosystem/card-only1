@@ -37,15 +37,15 @@ const paquetes = (lista) => lista.map((s, i) => `
           <p class="pk-para"><span>Para</span> ${esc(s.para)}</p>
         </article>`).join('');
 
-const casos = () => CASOS.map((c) => `
+const casos = () => CASOS.map((c, i) => `
       <article class="caso">
-        <div class="caso-img">
-          <img src="/assets/${c.img}" width="640" height="400" loading="lazy" decoding="async" alt="${esc(c.alt)}">
+        <div class="caso-top">
+          <span class="idx">${String(i + 1).padStart(2, '0')}</span>
           <span class="caso-sector">${esc(c.sector)}</span>
         </div>
         <h3>${esc(c.nombre)}</h3>
         ${c.metrica ? `
-        <p class="caso-metrica"><b>${esc(c.metrica)}</b> ${esc(c.metricaPie || '')}</p>` : ''}
+        <p class="caso-metrica"><b>${esc(c.metrica)}</b> <span>${esc(c.metricaPie || '')}</span></p>` : ''}
         <dl class="caso-cambio">
           <dt>Antes</dt><dd>${esc(c.antes)}</dd>
           <dt>Ahora</dt><dd class="ahora">${esc(c.despues)}</dd>
@@ -126,7 +126,6 @@ function html(p) {
     background:radial-gradient(120% 100% at 50% 0,rgba(160,34,62,.20),transparent 62%);
   }
   a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%}
   button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   :focus-visible{outline:2px solid var(--cream);outline-offset:3px}
 
@@ -249,36 +248,30 @@ function html(p) {
   .nota{font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:var(--md)}
 
   /* ── casos · lo que cambió en su negocio ───────────────────── */
-  .casos{display:flex;flex-direction:column;gap:var(--xl);margin-top:var(--md)}
-  .caso-img{position:relative}
-  /* height:auto es obligatorio: el atributo height del <img> fija la
-     altura y aspect-ratio sólo actúa con una dimensión en auto. */
-  .caso-img img{
-    width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top center;
-    background:var(--carbon);filter:saturate(.94);
-  }
+  /* Sin fotos: lo que sostiene el bloque es la cifra y el salto antes/ahora. */
+  .casos{margin-top:var(--md);border-top:1px solid var(--line)}
+  .caso{padding:26px 0 28px;border-bottom:1px solid var(--line)}
+  .caso-top{display:flex;align-items:center;gap:11px}
   .caso-sector{
-    position:absolute;left:10px;bottom:10px;
     font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
-    background:rgba(17,17,17,.82);color:var(--cream);
-    border:1px solid var(--line-strong);border-radius:999px;padding:5px 10px;
-    backdrop-filter:blur(6px);
+    color:var(--muted-alto);border:1px solid var(--line-strong);border-radius:999px;padding:5px 11px;
   }
-  .caso h3{font-size:19px;font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-top:18px}
+  .caso h3{font-size:23px;font-weight:800;letter-spacing:-.035em;line-height:1.15;margin-top:14px}
   /* la cifra es lo único que se lee a un metro de distancia */
-  .caso-metrica{display:flex;align-items:baseline;gap:9px;margin-top:12px;flex-wrap:wrap}
+  .caso-metrica{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:14px}
   .caso-metrica b{
-    font-size:38px;font-weight:800;letter-spacing:-.045em;line-height:1;
+    font-size:clamp(40px,13vw,52px);font-weight:800;letter-spacing:-.05em;line-height:.9;
     color:var(--wine-vivo);font-variant-numeric:tabular-nums;
   }
-  .caso-metrica{font-size:12px;color:var(--muted-alto);line-height:1.4}
-  .caso-cambio{margin-top:16px;display:grid;grid-template-columns:auto 1fr;gap:6px var(--sm)}
+  .caso-metrica span{font-size:12px;color:var(--muted-alto);line-height:1.4;max-width:14ch}
+  .caso-cambio{margin-top:18px;display:grid;grid-template-columns:auto 1fr;gap:8px var(--sm)}
   .caso-cambio dt{
     font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
     color:var(--muted);padding-top:5px;
   }
   .caso-cambio dd{font-size:13.5px;color:var(--muted-alto);line-height:1.5}
-  .caso-cambio .ahora{color:var(--cream)}
+  /* el «ahora» va en cream: es la mitad de la frase que vende */
+  .caso-cambio .ahora{color:var(--cream);padding-left:13px;border-left:2px solid var(--wine-vivo);margin-left:-13px}
 
   /* ── cómo funciona ─────────────────────────────────────────── */
   .pasos{list-style:none;margin-top:var(--md);border-top:1px solid var(--line)}

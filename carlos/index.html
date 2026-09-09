@@ -54,7 +54,6 @@
     background:radial-gradient(120% 100% at 50% 0,rgba(160,34,62,.20),transparent 62%);
   }
   a{color:inherit;text-decoration:none}
-  img{display:block;max-width:100%}
   button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   :focus-visible{outline:2px solid var(--cream);outline-offset:3px}
 
@@ -177,36 +176,30 @@
   .nota{font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:var(--md)}
 
   /* ── casos · lo que cambió en su negocio ───────────────────── */
-  .casos{display:flex;flex-direction:column;gap:var(--xl);margin-top:var(--md)}
-  .caso-img{position:relative}
-  /* height:auto es obligatorio: el atributo height del <img> fija la
-     altura y aspect-ratio sólo actúa con una dimensión en auto. */
-  .caso-img img{
-    width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top center;
-    background:var(--carbon);filter:saturate(.94);
-  }
+  /* Sin fotos: lo que sostiene el bloque es la cifra y el salto antes/ahora. */
+  .casos{margin-top:var(--md);border-top:1px solid var(--line)}
+  .caso{padding:26px 0 28px;border-bottom:1px solid var(--line)}
+  .caso-top{display:flex;align-items:center;gap:11px}
   .caso-sector{
-    position:absolute;left:10px;bottom:10px;
     font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
-    background:rgba(17,17,17,.82);color:var(--cream);
-    border:1px solid var(--line-strong);border-radius:999px;padding:5px 10px;
-    backdrop-filter:blur(6px);
+    color:var(--muted-alto);border:1px solid var(--line-strong);border-radius:999px;padding:5px 11px;
   }
-  .caso h3{font-size:19px;font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-top:18px}
+  .caso h3{font-size:23px;font-weight:800;letter-spacing:-.035em;line-height:1.15;margin-top:14px}
   /* la cifra es lo único que se lee a un metro de distancia */
-  .caso-metrica{display:flex;align-items:baseline;gap:9px;margin-top:12px;flex-wrap:wrap}
+  .caso-metrica{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:14px}
   .caso-metrica b{
-    font-size:38px;font-weight:800;letter-spacing:-.045em;line-height:1;
+    font-size:clamp(40px,13vw,52px);font-weight:800;letter-spacing:-.05em;line-height:.9;
     color:var(--wine-vivo);font-variant-numeric:tabular-nums;
   }
-  .caso-metrica{font-size:12px;color:var(--muted-alto);line-height:1.4}
-  .caso-cambio{margin-top:16px;display:grid;grid-template-columns:auto 1fr;gap:6px var(--sm)}
+  .caso-metrica span{font-size:12px;color:var(--muted-alto);line-height:1.4;max-width:14ch}
+  .caso-cambio{margin-top:18px;display:grid;grid-template-columns:auto 1fr;gap:8px var(--sm)}
   .caso-cambio dt{
     font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
     color:var(--muted);padding-top:5px;
   }
   .caso-cambio dd{font-size:13.5px;color:var(--muted-alto);line-height:1.5}
-  .caso-cambio .ahora{color:var(--cream)}
+  /* el «ahora» va en cream: es la mitad de la frase que vende */
+  .caso-cambio .ahora{color:var(--cream);padding-left:13px;border-left:2px solid var(--wine-vivo);margin-left:-13px}
 
   /* ── cómo funciona ─────────────────────────────────────────── */
   .pasos{list-style:none;margin-top:var(--md);border-top:1px solid var(--line)}
@@ -346,8 +339,8 @@
     <h2 class="sec-tit">Cómo estaban antes y cómo están ahora</h2>
     <div class="casos">
       <article class="caso">
-        <div class="caso-img">
-          <img src="/assets/proy-anamaria.jpg" width="640" height="400" loading="lazy" decoding="async" alt="Web de Ana María Rentería: villa de lujo sobre el mar con el titular «No necesitas ver más propiedades»">
+        <div class="caso-top">
+          <span class="idx">01</span>
           <span class="caso-sector">Inmobiliaria de lujo</span>
         </div>
         <h3>Ana María Rentería</h3>
@@ -358,21 +351,21 @@
         </dl>
       </article>
       <article class="caso">
-        <div class="caso-img">
-          <img src="/assets/proy-zallomotor.jpg" width="640" height="400" loading="lazy" decoding="async" alt="Web de Zallo Motor: el taller de Bilbao por dentro con coches en el elevador">
+        <div class="caso-top">
+          <span class="idx">02</span>
           <span class="caso-sector">Taller mecánico · Bilbao</span>
         </div>
         <h3>Zallo Motor</h3>
         
-        <p class="caso-metrica"><b>4,9★</b> con 108 reseñas en Google</p>
+        <p class="caso-metrica"><b>4,9★</b> <span>con 108 reseñas en Google</span></p>
         <dl class="caso-cambio">
           <dt>Antes</dt><dd>Un taller de barrio que dependía del boca a boca del vecino.</dd>
           <dt>Ahora</dt><dd class="ahora">Hoy la cita entra desde el móvil, por llamada o WhatsApp, y la ficha de Google es su mejor comercial.</dd>
         </dl>
       </article>
       <article class="caso">
-        <div class="caso-img">
-          <img src="/assets/proy-milewellness.jpg" width="640" height="400" loading="lazy" decoding="async" alt="Web de Mile Wellness: masaje con aceite y el titular «Tu bienestar es tu mejor inversión»">
+        <div class="caso-top">
+          <span class="idx">03</span>
           <span class="caso-sector">Bienestar</span>
         </div>
         <h3>Mile Wellness</h3>
@@ -383,13 +376,13 @@
         </dl>
       </article>
       <article class="caso">
-        <div class="caso-img">
-          <img src="/assets/proy-tomas.jpg" width="640" height="400" loading="lazy" decoding="async" alt="Landing de Tomás Gracia para el evento online Desata tu poder invencible">
+        <div class="caso-top">
+          <span class="idx">04</span>
           <span class="caso-sector">Formación · Marca personal</span>
         </div>
         <h3>Tomás Gracia</h3>
         
-        <p class="caso-metrica"><b>Objetivo</b> de plazas cubierto</p>
+        <p class="caso-metrica"><b>Objetivo</b> <span>de plazas cubierto</span></p>
         <dl class="caso-cambio">
           <dt>Antes</dt><dd>Un evento en directo que había que llenar en cuestión de días.</dd>
           <dt>Ahora</dt><dd class="ahora">Landing y campaña montadas a tiempo: llegó al número de inscritos que se había puesto.</dd>
