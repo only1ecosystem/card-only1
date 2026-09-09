@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lucas Espinosa · only1.</title>
+<meta name="description" content="Co-fundador de only1. Instalamos el sistema de crecimiento. Bilbao.">
+<meta name="theme-color" content="#111111">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Ccircle cx='200' cy='200' r='200' fill='%23FAFAF8'/%3E%3Cpath d='M176.46 147.78L149.68 147.78L149.68 99.94L229.76 99.94L229.76 290L176.46 290L176.46 147.78Z' fill='%23111111'/%3E%3Ccircle cx='265' cy='275' r='22' fill='%23520E23'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ─────────────────────────────────────────────────────────────
+     only1. · tarjeta digital · BRAND.md V2
+     Paleta cerrada: noir · carbon · wine · cream · muted
+     Wine es acento único: un solo bloque por pieza (el de cifras).
+     El CTA va en cream porque es el mayor contraste disponible.
+     Los hex de marca van tal cual (están aprobados y no se toca su
+     valor). El oklch se usa sólo para tintar los neutros hacia el hue
+     del wine (8°), que es un valor derivado, no de marca. Hex primero
+     como fallback para iOS < 15.4.
+     ───────────────────────────────────────────────────────────── */
+  :root{
+    --noir:#111111;   --noir:oklch(17.6% 0.006 8);
+    --carbon:#1C1C1C; --carbon:oklch(23.2% 0.008 8);
+    --wine:#520E23;
+    --cream:#FAFAF8;
+    --muted:#6B6B6B;  --muted:oklch(53% 0.008 8);
+    --line:rgba(250,250,248,.10);
+    --line-strong:rgba(250,250,248,.20);
+
+    /* escala 8pt */
+    --xs:8px; --sm:16px; --md:24px; --lg:32px; --xl:48px; --xxl:80px;
+
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--noir); color:var(--cream);
+    font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6; /* texto claro sobre oscuro pide más aire */
+    display:flex; justify-content:center;
+  }
+  .card{
+    width:100%; max-width:430px;
+    padding:max(var(--md),env(safe-area-inset-top)) var(--md)
+            max(var(--lg),env(safe-area-inset-bottom));
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* etiquetas: 700 · 3px tracking · UPPERCASE · 10-11px (BRAND.md) */
+  .label{
+    font-size:10px; font-weight:700; letter-spacing:3px;
+    text-transform:uppercase; color:var(--muted);
+  }
+
+  /* ── cabecera ──────────────────────────────────────────────── */
+  .top{
+    display:flex; align-items:baseline; justify-content:space-between;
+    padding-bottom:var(--md); border-bottom:1px solid var(--line);
+  }
+  /* variante light del wordmark: sobre noir el punto en wine no se ve
+     (#520E23 sobre #111111 no da contraste a 6px). En el isotipo el punto
+     sí funciona porque cae sobre el círculo cream. El wine de la pieza
+     vive en el bloque de cifras. */
+  .wordmark{font-size:22px;font-weight:800;letter-spacing:-.04em;line-height:1}
+
+  /* ── hero ──────────────────────────────────────────────────── */
+  .hero{padding:var(--xl) 0 0}
+  .name{
+    font-size:clamp(40px,12.5vw,56px); font-weight:800;
+    letter-spacing:-.045em; line-height:.98;
+  }
+  .role{margin-top:14px}
+  .pitch{
+    margin-top:var(--md); font-size:17px; font-weight:400;
+    line-height:1.5; color:var(--cream); max-width:32ch;
+  }
+  .pitch b{font-weight:700}
+
+  /* ── acciones ──────────────────────────────────────────────── */
+  .actions{display:flex;flex-direction:column;gap:10px;margin-top:var(--lg)}
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    height:56px;border-radius:2px;font-size:15px;font-weight:700;
+    letter-spacing:-.01em;
+    transition:transform .35s var(--ease),background-color .25s var(--ease),
+               border-color .25s var(--ease),color .25s var(--ease);
+  }
+  .btn:active{transform:scale(.98)}
+  .btn svg{width:19px;height:19px;flex:none}
+  .btn-main{background:var(--cream);color:var(--noir)}
+  .btn-alt{border:1px solid var(--line-strong);color:var(--cream)}
+  @media (hover:hover){
+    .btn-main:hover{background:#fff}
+    .btn-alt:hover{border-color:var(--cream)}
+  }
+
+  /* ── cifras · el único bloque wine de la pieza ─────────────── */
+  .figures{
+    background:var(--wine);
+    margin:var(--xl) calc(var(--md) * -1) 0; /* a sangre */
+    padding:var(--md);
+  }
+  .figures .label{color:rgba(250,250,248,.64)}
+  .figures dl{margin-top:var(--sm)}
+  .figures div{
+    display:flex;align-items:baseline;justify-content:space-between;gap:var(--sm);
+    padding:11px 0;border-top:1px solid rgba(250,250,248,.13);
+  }
+  .figures div:first-child{border-top:0}
+  .figures dt{font-size:12px;font-weight:500;color:rgba(250,250,248,.72);letter-spacing:.01em}
+  .figures dd{font-size:21px;font-weight:800;letter-spacing:-.03em;line-height:1;white-space:nowrap}
+
+  /* ── trabajo ───────────────────────────────────────────────── */
+  .work{padding-top:var(--xl)}
+  .work-head{display:flex;align-items:baseline;justify-content:space-between}
+
+  /* destacado: imagen a sangre, texto debajo. Nada de tarjetas. */
+  .feat{display:block;margin-top:var(--sm)}
+  /* height:auto es obligatorio: el atributo height="400" del <img> es un
+     hint de presentación que fija la altura, y aspect-ratio sólo actúa
+     cuando una de las dos dimensiones queda en auto. */
+  .feat img{
+    width:100%;height:auto;aspect-ratio:16/10;
+    object-fit:cover;object-position:top center;
+    background:var(--carbon);
+    filter:saturate(.94);
+    transition:filter .4s var(--ease);
+  }
+  .feat:active img{filter:saturate(1.06)}
+  .feat-meta{display:flex;align-items:baseline;gap:var(--xs);margin-top:14px}
+  .feat h3{font-size:16px;font-weight:700;letter-spacing:-.02em;line-height:1.3}
+  .feat p{font-size:13px;color:var(--muted);line-height:1.5;margin-top:4px}
+  .idx{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:2px;flex:none}
+
+  /* filas compactas: hairline entre ellas, sin caja */
+  .rows{margin-top:var(--md)}
+  .row{
+    display:grid;grid-template-columns:auto 84px 1fr;gap:var(--sm);
+    align-items:center;padding:14px 0;border-top:1px solid var(--line);
+  }
+  .row img{
+    width:84px;height:auto;aspect-ratio:16/10;
+    object-fit:cover;object-position:top center;
+    background:var(--carbon);
+  }
+  .row h3{font-size:14px;font-weight:700;letter-spacing:-.015em;line-height:1.25}
+  .row p{font-size:11.5px;color:var(--muted);line-height:1.45;margin-top:3px}
+
+  /* ── clientes ──────────────────────────────────────────────── */
+  .clients{padding-top:var(--xl)}
+  /* 6 en una sola fila a cualquier ancho: en flex a 52px fijos suman
+     362px y no caben en los 345px útiles de un iPhone. */
+  .avatars{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-top:var(--sm)}
+  .avatars a{
+    aspect-ratio:1;border-radius:50%;overflow:hidden;
+    border:1px solid var(--line-strong); background:var(--carbon);
+    transition:transform .35s var(--ease),border-color .25s var(--ease);
+  }
+  .avatars img{width:100%;height:100%;object-fit:cover}
+  .avatars a:active{transform:scale(.94)}
+  @media (hover:hover){.avatars a:hover{border-color:var(--cream)}}
+
+  /* ── enlaces + pie ─────────────────────────────────────────── */
+  .links{
+    display:flex;flex-wrap:wrap;gap:var(--sm) var(--md);
+    margin-top:var(--lg);padding-top:var(--md);
+    border-top:1px solid var(--line);
+  }
+  .links a{
+    font-size:13px;font-weight:500;color:var(--muted);
+    transition:color .25s var(--ease);
+  }
+  .links a:active{color:var(--cream)}
+  @media (hover:hover){.links a:hover{color:var(--cream)}}
+
+  footer{margin-top:var(--lg);font-size:11px;color:var(--muted);line-height:1.7}
+  footer b{color:var(--cream);font-weight:500}
+
+  /* ── entrada escalonada · sólo opacity y transform ─────────── */
+  .rise{opacity:0;transform:translateY(14px);animation:rise .9s var(--ease) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .d1{animation-delay:.05s}.d2{animation-delay:.12s}.d3{animation-delay:.19s}
+  .d4{animation-delay:.26s}.d5{animation-delay:.33s}
+  @media (prefers-reduced-motion:reduce){
+    .rise{animation:none;opacity:1;transform:none}
+    .btn,.feat img,.avatars a,.links a{transition:none}
+  }
+</style>
+</head>
+<body>
+<main class="card">
+
+  <header class="top rise d1">
+    <div class="wordmark">only1.</div>
+    <span class="label">Bilbao</span>
+  </header>
+
+  <section class="hero">
+    <h1 class="name rise d2">Lucas<br>Espinosa</h1>
+    <p class="role label rise d2">Co-fundador</p>
+    <p class="pitch rise d3">
+      Instalamos el sistema que vende tu conocimiento.
+      <b>No asesoramos: lo montamos y lo dejamos corriendo.</b>
+    </p>
+
+    <div class="actions rise d4">
+      <a class="btn btn-main" id="wa" href="https://wa.me/34627914263">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1.1.1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.1.2-.2.3-.3.5l-.5.5c-.2.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.4.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1l1.7.8c.3.1.5.2.5.4.1.1.1.6-.1 1.1Z"/></svg>
+        Hablar por WhatsApp
+      </a>
+      <!-- .vcf estático: Safari iOS ignora el atributo download en blobs -->
+      <a class="btn btn-alt" href="/lucas.vcf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+        Guardar contacto
+      </a>
+    </div>
+  </section>
+
+  <section class="figures rise d5">
+    <span class="label">Lo que llevamos hecho</span>
+    <dl>
+      <div><dt>Proyectos ejecutados</dt><dd>15+</dd></div>
+      <div><dt>Sectores probados</dt><dd>7</dd></div>
+      <div><dt>Seguidores generados</dt><dd>80K+</dd></div>
+      <div><dt>Reproducciones orgánicas</dt><dd>3M</dd></div>
+    </dl>
+  </section>
+
+  <section class="work">
+    <div class="work-head">
+      <span class="label">Trabajo</span>
+      <a class="label" href="https://only1ecosystem.com/casos" style="color:var(--cream)">Ver todo</a>
+    </div>
+
+    <a class="feat" href="https://only1ecosystem.com/casos">
+      <img src="/assets/proy-anamaria.jpg" width="640" height="400" loading="lazy" decoding="async"
+           alt="Web de Ana María Rentería: villa de lujo sobre el mar con el titular «No necesitas ver más propiedades»">
+      <div class="feat-meta">
+        <span class="idx">01</span>
+        <div>
+          <h3>Ana María Rentería</h3>
+          <p>Inmobiliaria de lujo. Web de captación en dos idiomas y sistema de consulta privada.</p>
+        </div>
+      </div>
+    </a>
+
+    <div class="rows">
+      <a class="row" href="https://only1ecosystem.com/casos">
+        <span class="idx">02</span>
+        <img src="/assets/proy-zallomotor.jpg" width="640" height="400" loading="lazy" decoding="async"
+             alt="Web de Zallo Motor: el taller de Bilbao por dentro con coches en el elevador">
+        <div>
+          <h3>Zallo Motor</h3>
+          <p>Taller mecánico, Bilbao. Web y captación por llamada y WhatsApp. 4,9★ con 108 reseñas.</p>
+        </div>
+      </a>
+      <a class="row" href="https://only1ecosystem.com/casos">
+        <span class="idx">03</span>
+        <img src="/assets/proy-tomas.jpg" width="640" height="400" loading="lazy" decoding="async"
+             alt="Landing de Tomás Gracia para el evento online Desata tu poder invencible">
+        <div>
+          <h3>Tomás Gracia</h3>
+          <p>Marca personal. Landing de evento en directo y captación de plazas por WhatsApp.</p>
+        </div>
+      </a>
+      <a class="row" href="https://only1ecosystem.com/casos">
+        <span class="idx">04</span>
+        <img src="/assets/proy-milewellness.jpg" width="640" height="400" loading="lazy" decoding="async"
+             alt="Web de Mile Wellness: masaje con aceite y el titular «Tu bienestar es tu mejor inversión»">
+        <div>
+          <h3>Mile Wellness</h3>
+          <p>Bienestar. Web y reserva de cita online para consulta con cita previa.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="clients">
+    <span class="label">Algunos clientes</span>
+    <div class="avatars">
+      <a href="https://instagram.com/tomasgraciaoficial" aria-label="Tomás Gracia en Instagram"><img src="/assets/cli-tomas.jpg" width="128" height="128" loading="lazy" decoding="async" alt="Tomás Gracia"></a>
+      <a href="https://instagram.com/inigoo00" aria-label="Íñigo en Instagram"><img src="/assets/cli-inigo.jpg" width="128" height="128" loading="lazy" decoding="async" alt="Íñigo"></a>
+      <a href="https://instagram.com/leyretorres_" aria-label="Leyre Torres en Instagram"><img src="/assets/cli-leyre.jpg" width="128" height="128" loading="lazy" decoding="async" alt="Leyre Torres"></a>
+      <a href="https://instagram.com/repa.movement" aria-label="Repa Movement en Instagram"><img src="/assets/cli-repa.jpg" width="128" height="128" loading="lazy" decoding="async" alt="Repa Movement"></a>
+      <a href="https://instagram.com/bryanmoralesk" aria-label="Bryan Morales en Instagram"><img src="/assets/cli-bryan.jpg" width="128" height="128" loading="lazy" decoding="async" alt="Bryan Morales"></a>
+      <a href="https://instagram.com/erikymonika.salsadancers" aria-label="Erik y Monika en Instagram"><img src="/assets/cli-erikymonika.jpg" width="128" height="128" loading="lazy" decoding="async" alt="Erik y Monika"></a>
+    </div>
+  </section>
+
+  <nav class="links">
+    <a href="https://instagram.com/soylucasespinosa">Instagram</a>
+    <a href="https://instagram.com/onlyonegrowth">@onlyonegrowth</a>
+    <a href="https://only1ecosystem.com">only1ecosystem.com</a>
+  </nav>
+
+  <footer>
+    <b>Donde el 1% ya está.</b><br>
+    ONLY1 S.L. · Bilbao
+  </footer>
+
+</main>
+
+<script>
+  // El mensaje de WhatsApp se adapta al evento: /lucas-v2?e=gala
+  // Sin parámetro queda una frase que sirve en cualquier contexto.
+  (function () {
+    var eventos = {
+      gala:  'te escaneé la tarjeta en la Gala',
+      feria: 'te escaneé la tarjeta en la feria',
+      web:   'llego desde vuestra web'
+    };
+    var e = new URLSearchParams(location.search).get('e');
+    var contexto = eventos[e] || 'acabo de escanear tu tarjeta';
+    var texto = 'Hola Lucas, ' + contexto + '. ¿Cuándo podemos hablar?';
+
+    var wa = document.getElementById('wa');
+    wa.href = 'https://wa.me/34627914263?text=' + encodeURIComponent(texto);
+
+    // Vercel Analytics: cuántos escanean vs cuántos abren WhatsApp
+    wa.addEventListener('click', function () {
+      if (window.va) window.va('event', { name: 'whatsapp', data: { persona: 'lucas', evento: e || 'directo' } });
+    });
+  }());
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
