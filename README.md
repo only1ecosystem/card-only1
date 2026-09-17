@@ -8,10 +8,10 @@ dónde va cada paquete y escribe por WhatsApp.
 | Ruta | Persona | Rol | WhatsApp | Instagram |
 |------|---------|-----|----------|-----------|
 | `/jonathan` | Jonathan Galarraga Custodio | CEO | +34 600 22 99 84 | @jg.custodio |
-| `/lucas`    | Lucas Espinosa   | Sistemas · Web y CRM | +34 627 914 263 | @soylucasespinosa |
-| `/edgar`    | Edgar            | Landings y chatbots  | +34 687 55 78 35 | @edgar.mindset |
-| `/carlos`   | Carlos Sieiro    | Audiovisual          | +34 672 854 705 | @carlossieiro |
-| `/cristian` | Cristian Mantval | Mensaje y guion      | +34 641 717 324 | @crismantval |
+| `/lucas`    | Lucas Espinosa   | CTO | +34 627 914 263 | @soylucasespinosa |
+| `/edgar`    | Edgar            | Deputy CTO | +34 687 55 78 35 | @edgar.mindset |
+| `/carlos`   | Carlos Sieiro    | CPO | +34 672 854 705 | @carlossieiro |
+| `/cristian` | Cristian Mantval | CMO | +34 641 717 324 | @crismantval |
 
 La raíz (`/`) redirige a https://only1ecosystem.com.
 
